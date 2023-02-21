@@ -1,55 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App  `${{firstName}}`" />
-  <p v-on:click="showUserName()">Hi, {{ firstName }}</p>
-  <img v-bind:src="picture" :alt="`${firstName} ${lastName}`" :class="gender" />
-  <h1>{{ firstName }} {{ lastName }}</h1>
-  <h3>Email: {{ email }} </h3>
-  <button :class="gender" @click="getUser()">Get Random User</button>
+  <div class="container">
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask" />
+    <router-view :showAddTask="showAddTask"></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header
   },
   data() {
     return {
-      firstName: "Kolawole"
+      showAddTask: false,
     }
   },
   methods: {
-    showUserName() {
-      alert(this.firstName)
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
     },
-    async getUser() {
-      const res = await fetch('https://randomuser.me/api')
-      const { results } = await res.json()
-
-      // console.log(results)
-
-      this.firstName = results[0].name.first
-      this.lastName = results[0].name.last
-      this.email = results[0].email
-      this.gender = results[0].gender
-      this.picture = results[0].picture.large
-    },
-  }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 * {
   box-sizing: border-box;
@@ -57,61 +35,44 @@ export default {
   padding: 0;
 }
 
-html,
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-#app {
-  width: 400px;
-  height: 100vh;
-  margin: auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
 }
 
-h1,
-h3 {
-  margin-bottom: 1rem;
-  font-weight: normal;
-}
-
-img {
-  border-radius: 50%;
-  border: 5px #333 solid;
-  margin-bottom: 1rem;
-}
-
-.male {
-  border-color: steelblue;
-  background-color: steelblue;
-}
-
-.female {
-  border-color: pink;
-  background-color: pink;
-  color: #333;
-}
-
-button {
-  cursor: pointer;
+.btn {
   display: inline-block;
-  background: #333;
-  color: white;
-  font-size: 18px;
-  border: 0;
-  padding: 1rem 1.5rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
 }
 
-button:focus {
+.btn:focus {
   outline: none;
 }
 
-button:hover {
+.btn:active {
   transform: scale(0.98);
 }
 
+.btn-block {
+  display: block;
+  width: 100%;
+}
 </style>
