@@ -1,12 +1,12 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-    
+        <Button text="Add task" color="green"/>
     </header>
 </template>
 
 <script>
-
+import Button from './Button.vue';
 export default {
     name: 'Header',
     props: {
@@ -14,6 +14,7 @@ export default {
         showAddTask: Boolean,
     },
     components: {
+        Button
     },
     computed: {
         homePage() {
