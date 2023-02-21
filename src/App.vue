@@ -4,7 +4,7 @@
   <p v-on:click="showUserName()">Hi, {{ firstName }}</p>
   <img v-bind:src="picture" :alt="`${firstName} ${lastName}`" :class="gender" />
   <h1>{{ firstName }} {{ lastName }}</h1>
-  <h3>Email: {{ email }}</h3>
+  <h3>Email: {{ email }} </h3>
   <button :class="gender" @click="getUser()">Get Random User</button>
 </template>
 
