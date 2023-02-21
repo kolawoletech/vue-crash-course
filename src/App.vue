@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask" />
-    <AddTask  @add-task="addTask()"/>
     <Tasks :tasks="tasks"/>
     <router-view :showAddTask="showAddTask"></router-view>
   </div>
@@ -10,14 +9,12 @@
 <script>
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
-import AddTask from './components/AddTask.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks,
-    AddTask
+    Tasks
   },
   data() {
     return {

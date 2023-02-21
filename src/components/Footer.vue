@@ -1,11 +1,17 @@
 <template>
-    <h3>Version 1.0.0</h3>
-    <router-link to="/">Go Back</router-link>
+    <footer>
+        <p>Copyright &copy; 2021</p>
+        <router-link to="/about">About</router-link>
+    </footer>
 </template>
 
-<script>
-export default {
-    name: 'About',
-    inheritAttrs: false, // disable 'non-props' warning
-};
-</script>
+<style scoped>
+a {
+    color: #333;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+}
+</style>
